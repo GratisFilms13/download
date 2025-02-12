@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Kijken</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        #video-container {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            background-color: #000;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        #video-player {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        #video-player iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+        #input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        #input-container input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        #input-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #input-container button:hover {
+            background-color: #e64a19;
+        }
+        pre {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            max-width: 80%;
+        }
+
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voer je unieke toegangscode in</h1>
+    <input type="text" id="unique-code">
+    <button onclick="checkAccess()">Bekijk Film</button>
+    
+    <div id="video-container">
+        <h2>Geniet van je film!</h2>
+        <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <script>
+        async function checkAccess() {
+            const code = document.getElementById("unique-code").value.trim();
+            if (!code) {
+                alert("Voer een geldige code in!");
+                return;
+            }
+
+            try {
+                const response = await fetch("data/links.json");
+                const data = await response.json();
+
+                if (!data.sublinks[code]) {
+                    alert("Ongeldige code!");
+                    return;
+                }
+
+                let linkData = data.sublinks[code];
+                let storedUser = localStorage.getItem("user_code");
+
+                if (linkData.used && storedUser !== code) {
+                    alert("Deze link is al gebruikt!");
+                    return;
+                }
+
+                localStorage.setItem("user_code", code);
+
+                document.getElementById("video-container").style.display = "block";
+                document.getElementById("video-frame").src = `https://vidsrc.to/embed/movie/${code}`;
+
+                console.log("De link is nu vergrendeld voor andere gebruikers.");
+            } catch (error) {
+                console.error("Fout bij het laden van de links:", error);
+                alert("Er is iets misgegaan. Probeer het opnieuw.");
+            }
+        }
+    </script>
+</body>
+</html>
