@@ -7,24 +7,55 @@
     <style>
         /* Algemene stijlen */
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
             color: white;
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
-            align-items: center;
+            align-items: center; /* Centreert de inhoud verticaal */
             min-height: 100vh;
             text-align: center;
+        }
+
+        /* Container voor de video en input */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
+        }
+
+        /* Stappenplan aan de linkerkant */
+        .stappenplan {
+            width: 30%;
+            margin-right: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .stappenplan ol {
+            padding-left: 20px;
+        }
+
+        .stappenplan a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .stappenplan a:hover {
+            text-decoration: underline;
         }
 
         /* Container voor de video */
         #video-container {
             width: 90%;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: #1e1e1e;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
@@ -62,51 +93,32 @@
             font-size: 16px;
             width: 300px;
             max-width: 100%;
-            border: none;
+            border: 2px solid #007bff;
             border-radius: 8px;
             outline: none;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #2c2c2c;
             color: white;
-            transition: all 0.3s ease;
-            text-align: center;
+            transition: border-color 0.3s ease;
         }
 
         #input-container input:focus {
-            background-color: rgba(255, 255, 255, 0.3);
+            border-color: #0056b3;
         }
 
         #input-container button {
             padding: 12px 24px;
             font-size: 16px;
-            background: #ff5722;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease;
         }
 
         #input-container button:hover {
-            background: #e64a19;
-            transform: scale(1.05);
-        }
-
-        /* Instructies */
-        #tutorial-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0px;
-            border-radius: 10px;
-            font-size: 14px;
-            color: #ddd;
-            line-height: 1.5;
-            margin-top: 10px;
+            background-color: #0056b3;
         }
 
         /* Header */
@@ -119,6 +131,21 @@
 
         /* Responsive design */
         @media (max-width: 600px) {
+            body {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stappenplan {
+                width: 90%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                width: 90%;
+            }
+
             h1 {
                 font-size: 2rem;
             }
@@ -126,48 +153,70 @@
             #input-container input {
                 width: 100%;
             }
-
-            #tutorial-container {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 <body>
-    <h1>Gratis Films Kijken</h1>
 
-    <div id="video-container">
-        <div id="video-player">
-            <iframe src="" frameborder="0" allowfullscreen></iframe>
+    <!-- Stappenplan aan de linkerkant -->
+    <div class="stappenplan">
+        <h2>Stappenplan</h2>
+        <ol>
+            <li>Ga naar <a href="https://www.imdb.com" target="_blank">Imdb.com</a></li>
+            <li>Zoek de film die je wil kijken</li>
+            <li>Kopieer de IMDb ID uit de URL</li>
+            <li>Plak hem in het vakje onderaan</li>
+            <li>Klik op "Laad film"</li>
+            <li>KLIK NOG NIET OP PLAY</li>
+            <li>Zet je cursor linksbovenin de film</li>
+            <li>Klik op het wolkje</li>
+            <li>Selecteer CloudStream Pro</li>
+            <li>Veel kijkplezier!</li>
+        </ol>
+    </div>
+
+    <!-- Hoofdinhoud -->
+    <div class="main-content">
+        <h1>Gratis Films Kijken</h1>
+
+        <div id="video-container">
+            <div id="video-player">
+                <iframe src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div id="input-container">
+            <input type="text" id="imdb-id" placeholder="Voer IMDb ID in (bijv. tt0111161)">
+            <button onclick="loadMovie()">Laad Film</button>
         </div>
     </div>
 
-    <div id="input-container">
-        <input type="text" id="imdb-id" placeholder="Voer IMDb ID in (bijv. tt0111161)">
-        <button onclick="loadMovie()">Laad Film</button>
-    </div>
-
-    <div id="tutorial-container">
-        <pre>
-            Je kan de IMDb ID vinden door:
-            1. Naar de IMDb website te gaan
-            2. Zoek de film die je wil kijken
-            3. Ga in je zoekbalk naar de URL
-               en kopieer IMDb ID (bijv. tt0111161)
-        </pre>
-    </div>
-
     <script>
+        // Functie om de film te laden
         function loadMovie() {
             const imdbId = document.getElementById('imdb-id').value.trim();
             if (!imdbId) {
                 alert('Voer een geldig IMDb ID in!');
                 return;
             }
+
+            // VidSrc embed URL
             const vidSrcUrl = `https://vidsrc.to/embed/movie/${imdbId}`;
+
+            // Laad de video in de iframe
             const videoPlayer = document.querySelector('#video-player iframe');
             videoPlayer.src = vidSrcUrl;
+
+            // Debug: Controleer of de iframe wordt geladen
+            videoPlayer.onload = () => {
+                console.log('Iframe is geladen!');
+            };
+            videoPlayer.onerror = () => {
+                console.error('Er is een fout opgetreden bij het laden van de iframe.');
+                alert('De film kon niet worden geladen. Controleer het IMDb ID en probeer het opnieuw.');
+            };
         }
     </script>
+
 </body>
 </html>
