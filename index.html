@@ -155,27 +155,28 @@
             }
         }
     </style>
+
+    <meta name="referrer" content="no-referrer">
+
 </head>
 <body>
 
     <!-- Stappenplan aan de linkerkant -->
     <div class="stappenplan">
-        <h2>Serie + aflevering kiezen:</h2>
+        <h2>Film uitkiezen:</h2>
         <ol>
             <li>Ga naar <a href="https://www.imdb.com" target="_blank">Imdb.com</a></li>
-            <li>Zoek de serie die je wil kijken</li>
+            <li>Zoek de film die je wil kijken</li>
             <li>Kopieer de <strong>hele link</strong> uit de adresbalk</li>
             <li>Plak hem in het vakje onderaan</li>
-            <li>Vul het seizoensnummer in</li>
-            <li>Vul het afleveringsnummer in</li>
-            <li>Klik op "Laad serie"</li>
+            <li>Klik op "Laad film"</li>
             <li>Veel kijkplezier!</li>
         </ol>
     </div>
 
     <!-- Hoofdinhoud -->
     <div class="main-content">
-        <h1>Gratis Series Kijken</h1>
+        <h1>Gratis Films Kijken</h1>
 
         <div id="video-container">
             <div id="video-player">
@@ -184,9 +185,7 @@
         </div>
 
         <div id="input-container">
-            <input type="text" id="imdb-link" placeholder="Plak hier de IMDb link">
-            <input type="text" id="season" placeholder="Vul hier het seizoensnummer in">
-            <input type="text" id="episode" placeholder="Vul hier het afleveringsnummer in">
+            <input type="text" id="imdb-link" placeholder="Plak hier de IMDb link (bijv. https://www.imdb.com/title/tt0111161/)">
             <button onclick="loadMovie()">Laad Film</button>
         </div>
     </div>
@@ -204,9 +203,10 @@
 
         // Functie om de film te laden
         function loadMovie() {
+
+            document.referrer = "";
+
             const imdbLink = document.getElementById('imdb-link').value.trim();
-            const season = document.getElementById('season').value.trim();
-            const episode = document.getElementById('episode').value.trim();
             if (!imdbLink) {
                 alert('Voer een geldige IMDb link in!');
                 return;
@@ -220,7 +220,7 @@
             }
 
             // VidSrc embed URL
-            const vidSrcUrl = `https://vidsrc.xyz/embed/tv/${imdbId}/${season}-${episode}?autonext=1`;
+            const vidSrcUrl = `https://vidsrc.xyz/embed/movie/${imdbId}`;
 
             // Laad de video in de iframe
             const videoPlayer = document.querySelector('#video-player iframe');
@@ -232,7 +232,7 @@
             };
             videoPlayer.onerror = () => {
                 console.error('Er is een fout opgetreden bij het laden van de iframe.');
-                alert('De serie kon niet worden geladen. Controleer de IMDb link en probeer het opnieuw.');
+                alert('De film kon niet worden geladen. Controleer de IMDb link en probeer het opnieuw.');
             };
         }
     </script>
