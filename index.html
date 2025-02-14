@@ -3,389 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gratis Films Kijken</title>
     <style>
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            min-height: 95vh;
-            text-align: center;
-        }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 60%;
-        }
-
-        .left-section {
-            width: 30%;
-            margin-right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .tutorial-button {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: 100%;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .tutorial-button:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
-        }
-
-        .stappenplan {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            height: fit-content;
-        }
-
-        .stappenplan ol {
-            padding-left: 20px;
-            margin: 0;
-        }
-
-        .stappenplan li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .stappenplan a {
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .stappenplan a:hover {
-            color: #93c5fd;
-        }
-
-        #video-container {
-            width: 90%;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             max-width: 800px;
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(10px);
+            margin: 0 auto;
             padding: 20px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        #video-player {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #000;
-        }
-
-        #video-player iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        #input-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        #input-container input {
-            width: 100%;
-            padding: 14px 16px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            transition: all 0.2s ease;
-            outline: none;
-        }
-
-        #input-container input:focus {
-            border-color: #3b82f6;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        #input-container input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .load-button {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 1rem;
-            min-width: 140px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-
-        .load-button:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
+            background-color: #f5f5f5;
         }
 
         h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
-            background-clip: border-box;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: none;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
         }
 
-        .stappenplan h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 16px;
+        .download-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
         }
 
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            padding: 24px;
-            background: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            text-align: left;
+        a {
+            background-color: #3498db;
             color: white;
-            overflow-y: auto;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            font-size: 1.2em;
+            min-width: 250px;
+            text-align: center;
         }
 
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(4px);
+        a:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        .close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            cursor: pointer;
-            font-size: 24px;
-            color: rgba(255, 255, 255, 0.6);
-            transition: color 0.2s ease;
-        }
-
-        .close:hover {
-            color: white;
-        }
-
-        .popup h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .popup ul {
-            padding-left: 20px;
-            margin: 16px 0;
-        }
-
-        .popup li {
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 800px) {
+        @media (max-width: 600px) {
             body {
-                flex-direction: column;
-                padding: 16px;
-                gap: 20px;
+                padding: 15px;
             }
-
-            .left-section {
-                width: 90%;
-                margin-right: 0;
-            }
-
-            .main-content {
-                width: 90%;
-            }
-
+            
             h1 {
-                font-size: 1.75rem;
-                margin-bottom: 20px;
+                font-size: 2em;
             }
-
-            #input-container {
-                width: 100%;
-            }
-
-            .popup {
-                width: 85%;
-                padding: 20px;
+            
+            a {
+                width: 90%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="left-section">
-        <button class="tutorial-button" onclick="showPopup()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-            Ad-Free films kijken (ook gratis)
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-        </button>
-        <div class="stappenplan">
-            <h2>Film uitkiezen:</h2>
-            <ol>
-                <li>Ga naar <a href="https://www.imdb.com" target="_blank">Imdb.com</a></li>
-                <li>Zoek de film die je wil kijken</li>
-                <li>Kopieer de <strong>hele link</strong> uit de adresbalk</li>
-                <li>Plak hem in het vakje onderaan</li>
-                <li>Klik op "Laad film"</li>
-                <li>Veel kijkplezier!</li>
-            </ol>
-        </div>
+    <h1>Lokaal afspelen</h1>
+    <div class="download-container">
+        <a href="https://GratisFilms13.github.io/Films/FilmKijken.html" download>Gratis films kijken</a>
+        <a href="https://GratisFilms13.github.io/Films/SeriesKijken.html" download>Gratis series kijken</a>
     </div>
-
-    <div class="main-content">
-        <h1>Gratis Films Kijken</h1>
-
-        <div id="video-container">
-            <div id="video-player">
-                <iframe src="" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div id="input-container">
-            <input type="text" id="imdb-link" placeholder="Plak hier de IMDb link (bijv. https://www.imdb.com/title/tt0111161/)">
-            <button class="load-button" onclick="loadMovie()">Laad Film</button>
-        </div>
-    </div>
-
-    <div class="overlay" onclick="hidePopup()"></div>
-    <div class="popup">
-        <span class="close" onclick="hidePopup()">&times;</span>
-        <h2>AdFree films kijken</h2>
-        <hr>
-        <p>(Dit werkt momenteel alleen op een Chrome browser)</p>
-        <p><b>Volg deze stappen:</b></p>
-        <ul>
-            <li>Installeer <a href="https://chromewebstore.google.com/detail/redirect-blocker/egmgebeelgaakhaoodlmnimbfemfgdah" style="margin: 3px; color: #3b82f6; font-size: larger;"><b>deze extensie</b></a> vanuit de chrome web store.</li>
-            <li>Ga rechtsboven naast je zoekbalk naar extensies (het puzzelstukje)</li>
-            <li>Selecteer "Current Tab"</li>
-            <li>Klik op "Turn On"</li>
-            <li>Typ bij "Saved URL's" het volgende: IMDb.com </li>
-        </ul>
-        <img src="Media/Tutorial.gif" alt="Tutorial how to set it up" style="height: 300px; margin-left: 50px;">
-    </div>
-
-    <script>
-        document.referrer = "";
-
-        function extractImdbId(imdbLink) {
-            const imdbIdMatch = imdbLink.match(/title\/(tt\d+)\/?/);
-            if (imdbIdMatch && imdbIdMatch[1]) {
-                return imdbIdMatch[1];
-            }
-            return null;
-        }
-
-        function loadMovie() {
-            document.referrer = "";
-
-            const imdbLink = document.getElementById('imdb-link').value.trim();
-            if (!imdbLink) {
-                alert('Voer een geldige IMDb link in!');
-                return;
-            }
-
-            const imdbId = extractImdbId(imdbLink);
-            if (!imdbId) {
-                alert('Ongeldige IMDb link. Zorg ervoor dat je de hele link plakt (bijv. https://www.imdb.com/title/tt0111161/)');
-                return;
-            }
-
-            const vidSrcUrl = `https://vidsrc.xyz/embed/movie/${imdbId}`;
-            const videoPlayer = document.querySelector('#video-player iframe');
-            videoPlayer.src = vidSrcUrl;
-
-            videoPlayer.onload = () => {
-                console.log('Iframe is geladen!');
-            };
-            videoPlayer.onerror = () => {
-                console.error('Er is een fout opgetreden bij het laden van de iframe.');
-                alert('De film kon niet worden geladen. Controleer de IMDb link en probeer het opnieuw.');
-            };
-        }
-
-        function showPopup() {
-            document.querySelector('.overlay').style.display = 'block';
-            document.querySelector('.popup').style.display = 'block';
-        }
-
-        function hidePopup() {
-            document.querySelector('.overlay').style.display = 'none';
-            document.querySelector('.popup').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
