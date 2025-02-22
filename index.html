@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdFreeMovies - Download</title>
+    <title>AdFreeMovies - Downloads</title>
     <style>
         :root {
-            --primary-color: #0052cc;
-            --secondary-color: #0747a6;
-            --accent-color: #0065ff;
-            --background-color: #1a1a1a;
-            --content-bg: #2d2d2d;
+            --background-color: #0f1217;
+            --content-bg: #1a1f25;
+            --button-blue: #4385f5;
+            --button-hover: #3274e7;
             --text-color: #ffffff;
-            --gray-light: #3d3d3d;
-            --gray-dark: #242424;
+            --text-secondary: #a8b3cf;
             --border-radius: 8px;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -30,29 +28,44 @@
         .header {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
             border-radius: var(--border-radius);
             margin-bottom: 30px;
-            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(33, 150, 243, 0.15) 0%, rgba(33, 150, 243, 0) 100%);
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
             margin: 0;
-            font-size: 2.5em;
-            font-weight: 700;
+            color: #ffffff;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .subtitle {
-            color: #ffffff;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            color: rgba(255,255,255,0.9);
             margin: 10px 0 0;
-            opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
         .main-content {
             background-color: var(--content-bg);
-            padding: 40px;
+            padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
@@ -65,8 +78,8 @@
         }
 
         .feature {
-            padding: 25px;
-            background-color: var(--gray-dark);
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
             border-radius: var(--border-radius);
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -77,45 +90,43 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
 
+        .feature img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover img {
+            transform: scale(1.1);
+        }
+
         .feature h3 {
-            color: var(--accent-color);
+            color: var(--button-blue);
             margin: 15px 0;
+            font-size: 1.4em;
         }
 
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 15px;
-        }
-
-        .feature-icon.no-ads {
-            fill: #ff4757;
-            stroke: #ff4757;
-        }
-
-        .feature-icon.quality {
-            fill: #2ecc71;
-            stroke: #2ecc71;
-        }
-
-        .feature-icon.friendly {
-            fill: #ffd32a;
-            stroke: #ffd32a;
+        .feature p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.6;
         }
 
         .download-section {
             text-align: center;
             padding: 40px;
-            background-color: var(--gray-dark);
+            background: rgba(255,255,255,0.05);
             border-radius: var(--border-radius);
             margin: 30px auto;
             max-width: 600px;
         }
 
         .download-button {
-            background: var(--accent-color);
+            background: var(--button-blue);
             color: white;
-            padding: 16px 40px;
+            padding: 15px 40px;
             border: none;
             border-radius: var(--border-radius);
             font-size: 1.2em;
@@ -124,36 +135,30 @@
             margin: 0 auto;
             display: block;
             width: fit-content;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
         }
 
         .download-button:hover {
-            background: #0052cc;
+            background: var(--button-hover);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 101, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(67, 133, 245, 0.3);
         }
 
         .download-info {
             margin-top: 20px;
-            color: #ffffff;
+            color: var(--text-secondary);
             font-size: 0.9em;
-            line-height: 1.6;
-            opacity: 0.8;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            color: #ffffff;
-            opacity: 0.7;
         }
 
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
             }
 
             .main-content {
@@ -162,10 +167,6 @@
 
             .features {
                 grid-template-columns: 1fr;
-            }
-
-            .download-section {
-                padding: 20px;
             }
 
             .download-button {
@@ -184,17 +185,17 @@
     <div class="main-content">
         <div class="features">
             <div class="feature">
-                <img src="https://github.com/GratisFilms13/download/blob/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/adfree.png" type="png">
+                <img src="https://raw.githubusercontent.com/GratisFilms13/download/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/adfree.png" alt="Ad-free">
                 <h3>Ad-free Ervaring</h3>
                 <p>Geniet van films en series zonder onderbrekingen</p>
             </div>
             <div class="feature">
-                    <img src="https://github.com/GratisFilms13/download/blob/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/quality.png" type="png">
+                <img src="https://raw.githubusercontent.com/GratisFilms13/download/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/quality.png" alt="HD Quality">
                 <h3>HD Kwaliteit</h3>
                 <p>Stream in hoge kwaliteit op elk apparaat</p>
             </div>
             <div class="feature">
-                    <img src="https://github.com/GratisFilms13/download/blob/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/blueheart.png" type="png">
+                <img src="https://raw.githubusercontent.com/GratisFilms13/download/92e4ef6c1816b2f3564b12741881ca41ba8b52f5/img/blueheart.png" alt="User Friendly">
                 <h3>Gebruiksvriendelijk</h3>
                 <p>Eenvoudige interface voor de beste ervaring</p>
             </div>
@@ -210,10 +211,6 @@
             </p>
         </div>
     </div>
-
-    <footer>
-        <p>© 2024 AdFweeMovies - Powered by VidSrc API</p>
-    </footer>
 
     <script>
         document.getElementById('downloadButton').addEventListener('click', async function() {
