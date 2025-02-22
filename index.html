@@ -3,91 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Gratis Films en Series</title>
+    <title>AdFweeMovies - Downloads</title>
     <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-radius: 8px;
+        }
+
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
         }
 
         h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 20px;
+            color: var(--primary-color);
+            margin: 0;
             font-size: 2.5em;
+            font-weight: 700;
         }
 
-        p {
-            text-align: center;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-            color: #555;
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin: 10px 0 0;
         }
 
-        .download-container {
-            display: flex;
-            flex-direction: column;
+        .main-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            align-items: center;
+            margin-bottom: 40px;
         }
 
-        button {
-            background-color: #3498db;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border: none;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            font-size: 1.2em;
-            min-width: 250px;
+        .feature {
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
             text-align: center;
-            cursor: pointer;
         }
 
-        button:hover {
+        .feature h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-top: 30px;
+        }
+
+        .download-button {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-button:hover {
             background-color: #2980b9;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        @media (max-width: 600px) {
+        .download-info {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
             body {
-                padding: 15px;
+                padding: 10px;
             }
-            
-            h1 {
-                font-size: 2em;
+
+            .main-content {
+                padding: 20px;
             }
-            
-            button {
-                width: 90%;
+
+            .features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <h1>AdFweeMovies</h1>
-    <p>An ad-free movie and series player powered by VidSrc API. For the best performance use this on desktop.</p>
-    <div class="download-container">
-        <button id="downloadLink">Download</button>
+    <div class="header">
+        <h1>AdFweeMovies</h1>
+        <p class="subtitle">Premium Entertainment Zonder Advertenties</p>
     </div>
 
+    <div class="main-content">
+        <div class="features">
+            <div class="feature">
+                <h3>Ad-free Ervaring</h3>
+                <p>Geniet van films en series zonder onderbrekingen</p>
+            </div>
+            <div class="feature">
+                <h3>HD Kwaliteit</h3>
+                <p>Stream in hoge kwaliteit op elk apparaat</p>
+            </div>
+            <div class="feature">
+                <h3>Gebruiksvriendelijk</h3>
+                <p>Eenvoudige interface voor de beste ervaring</p>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <button id="downloadButton" class="download-button">
+                Download Nu
+            </button>
+            <p class="download-info">
+                Aanbevolen: gebruik een desktop browser voor de beste ervaring.<br>
+                Bevat: FilmKijken.html & SeriesKijken.html
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 AdFweeMovies - Powered by VidSrc API</p>
+    </footer>
+
     <script>
-        document.getElementById('downloadLink').addEventListener('click', function() {
-            const bestanden = [
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            const files = [
                 'https://raw.githubusercontent.com/GratisFilms13/download/refs/heads/main/files/FilmKijken.html',
                 'https://raw.githubusercontent.com/GratisFilms13/download/refs/heads/main/files/SeriesKijken.html'
             ];
-
-            bestanden.forEach(bestand => {
+            
+            files.forEach(file => {
                 const link = document.createElement('a');
-                link.href = bestand;
-                link.download = bestand.split('/').pop();
+                link.href = file;
+                link.download = file.split('/').pop();
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
