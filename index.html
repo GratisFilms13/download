@@ -67,20 +67,18 @@
 
     <script>
         document.getElementById('downloadLink').addEventListener('click', function() {
-                const bestanden = [
-                    'FilmKijken.html',
-                    'SeriesKijken.html',
-                ];
-    
-                bestanden.forEach(bestand => {
-                    const link = document.createElement('a');
-                    link.href = bestand;
-                    link.download = bestand; 
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                });
-            });
+            const bestanden = [
+                'https://raw.githubusercontent.com/GratisFilms13/download/files/FilmKijken.html',
+                'https://raw.githubusercontent.com/GratisFilms13/download/files/SeriesKijken.html'
+            ];
+
+            bestanden.forEach(bestand => {
+                const link = document.createElement('a');
+                link.href = bestand;
+                link.download = bestand.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
         </script>
 </body>
 </html>
