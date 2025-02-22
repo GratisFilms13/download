@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Gratis Films en Series</title>
     <style>
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -10,13 +11,21 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f5f5f5;
+            color: #333;
         }
 
         h1 {
             color: #2c3e50;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             font-size: 2.5em;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #555;
         }
 
         .download-container {
@@ -31,11 +40,13 @@
             color: white;
             padding: 15px 30px;
             text-decoration: none;
+            border: none;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             font-size: 1.2em;
             min-width: 250px;
             text-align: center;
+            cursor: pointer;
         }
 
         button:hover {
@@ -53,16 +64,17 @@
                 font-size: 2em;
             }
             
-            a {
+            button {
                 width: 90%;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Download het programma:</h1>
+    <h1>AdFweeMovies</h1>
+    <p>An ad-free movie and series player powered by VidSrc API. For the best performance use this on desktop.</p>
     <div class="download-container">
-        <button id="downloadLink">Gratis films en series kijken</button>
+        <button id="downloadLink">Download</button>
     </div>
 
     <script>
@@ -79,6 +91,8 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-        </script>
+            });
+        });
+    </script>
 </body>
 </html>
