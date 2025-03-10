@@ -338,9 +338,55 @@
                 padding: 20px;
             }
         }
+
+        body {
+            padding-top: 80px;
+        }
     </style>
 </head>
 <body>
+    <nav style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+    ">
+    <a href="FilmKijken.html" style="
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        background: #3b82f6;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    " onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'"
+       onmouseout="this.style.background='#3b82f6'">
+        Films
+    </a>
+    <a href="SeriesKijken.html" style="
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        background: #0a46a7;
+        border: 1px solid black;
+    " onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'"
+       onmouseout="this.style.background='#0a46a7'">
+        Series
+    </a>
+    </nav>
+
     <div class="left-section">
         <button class="tutorial-button" onclick="showPopup()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -407,8 +453,9 @@
             <li>Ga rechtsboven naast je zoekbalk naar extensies (het puzzelstukje)</li>
             <li>Selecteer "Current Tab"</li>
             <li>Klik op "Turn On"</li>
-            <li>Typ bij "Saved URL's" het volgende: https://www.IMDb.com </li>
+            <li>Typ bij "Saved URL's" het volgende: IMDb.com </li>
         </ul>
+        <img src="Media/Tutorial.gif" alt="Tutorial how to set it up" style="height: 300px; margin-left: 50px;">
     </div>
 
     <script>
